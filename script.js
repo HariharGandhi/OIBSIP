@@ -1,48 +1,29 @@
-let nav = document.querySelector("nav");
-let scrollBtn = document.querySelector(".scroll-button a");
-
-let val;
-
-window.onscroll = function () {
-    if (document.documentElement.scrollTop > 20) {
-        nav.classList.add("sticky");
-        scrollBtn.style.display = "block";
+function convertToFahrenheit() {
+    var f = document.getElementById('fah');
+    var c = document.getElementById('cel');
+    var stringTemp = c.value;
+    var value = parseFloat(stringTemp);
+    if (stringTemp == "") {
+        alert("Enter Value In Celcuis!");
+    } else if (value) {
+        var converted = (value * 9 / 5) + 32;
+        f.value = converted.toFixed(2);;
     } else {
-        nav.classList.remove("sticky");
-        scrollBtn.style.display = "none";
+        alert("Wrong input!");
     }
-
 }
 
-// Side navigation menubar
-let body = document.querySelector("body");
-let navbar = document.querySelector(".navbar");
-let menuBtn = document.querySelector(".menu-btn");
-let cancelBtn = document.querySelector(".cancel-btn");
-
-menuBtn.onclick = function(){
-    navbar.classList.add("active");
-    menuBtn.style.opacity = "0";
-    menuBtn.style.pointerEvents = "none";
-    body.style.overflowX = "hidden";
-    scrollBtn.style.pointerEvents = "none";
-}
-
-cancelBtn.onclick = function(){
-    navbar.classList.remove("active");
-    menuBtn.style.opacity = "1";
-    menuBtn.style.pointerEvents = "auto";
-    body.style.overflowX = "auto";
-    scrollBtn.style.pointerEvents = "auto";
-}
-
-// Side navigation bar closer
-
-let navLinks = document.querySelectorAll(".menu li a");
-for (var i = 0; i < navLinks.length; i++){
-    navLinks[i].addEventListener("click" , function(){
-        navbar.classList.remove("active");
-        menuBtn.style.opacity ="1";
-        menuBtn.style.pointerEvents = "auto";
-    });
+function convertToCelcius() {
+    var f = document.getElementById('fah');
+    var c = document.getElementById('cel');
+    var stringTemp = f.value;
+    var value = parseFloat(stringTemp);
+    if (stringTemp == "") {
+        alert("Enter Value In Fahrenheit!");
+    } else if (value) {
+        var converted = (value - 32) * 5 / 9;
+        c.value = converted.toFixed(2);
+    } else {
+        alert("Wrong input!");
+    }
 }
